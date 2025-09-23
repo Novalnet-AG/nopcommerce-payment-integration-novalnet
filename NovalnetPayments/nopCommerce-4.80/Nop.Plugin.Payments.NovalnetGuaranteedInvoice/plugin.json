@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Payment methods",
+  "FriendlyName": "Invoice with payment guarantee",
+  "SystemName": "Payments.NovalnetGuaranteedInvoice",
+  "Version": "1.0.0",
+  "SupportedVersions": [ "4.80" ],
+  "Author": "NOVALNET",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Payments.NovalnetGuaranteedInvoice.dll",
+  "Description": "This plugin enables Invoice with payment guarantee payment (stored into database)"
+}

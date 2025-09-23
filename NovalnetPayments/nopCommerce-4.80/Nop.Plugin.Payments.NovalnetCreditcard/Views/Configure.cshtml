@@ -1,0 +1,167 @@
+﻿@model ConfigurationModel
+@{
+    Layout = "_ConfigurePlugin";
+}
+@using Nop.Plugin.Payments.NovalnetCreditcard.Models
+
+@await Component.InvokeAsync(typeof(StoreScopeConfigurationViewComponent))
+
+<form asp-controller="NovalnetCreditcard" asp-action="Configure" method="post">
+    <div class="cards-group">
+        <div class="card card-default">
+            <div class="card-body">
+
+                @(await Html.LocalizedEditorAsync<ConfigurationModel, ConfigurationModel.ConfigurationLocalizedModel>("plugin-settings-localized",
+                @<div>
+                    <div class="form-group row">
+                        <div class="col-md-3">
+                            <nop-override-store-checkbox asp-for="DescriptionText_OverrideForStore" asp-input="@Model.Locales[item].DescriptionText" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                            <nop-label asp-for="@Model.Locales[item].DescriptionText" />
+                        </div>
+                        <div class="col-md-9">
+                            <nop-editor asp-for="@Model.Locales[item].DescriptionText" />
+                            <span asp-validation-for="@Model.Locales[item].DescriptionText"></span>
+                        </div>
+                    </div>
+                    <input type="hidden" asp-for="@Model.Locales[item].LanguageId" />
+                </div>
+                ,
+                @<div>
+                    <div class="form-group row">
+                        <div class="col-md-3">
+                            <nop-override-store-checkbox asp-for="DescriptionText_OverrideForStore" asp-input="DescriptionText" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                            <nop-label asp-for="DescriptionText" />
+                        </div>
+                        <div class="col-md-9">
+                            <nop-editor asp-for="DescriptionText" />
+                            <span asp-validation-for="DescriptionText"></span>
+                        </div>
+                    </div>
+                </div>
+                ,
+                //localizable settings per store (overridden store settings) are not supported yet
+                true
+                ))
+
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="TestMode_OverrideForStore" asp-input="TestMode" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="TestMode" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="TestMode" />
+                        <span asp-validation-for="TestMode"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <nop-label asp-for="PaymentActionString" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-select asp-for="PaymentActionString" asp-items="Model.AvailablePaymentActions" class="form-control" />
+                        <nop-override-store-checkbox asp-for="PaymentAction_OverrideForStore"
+                                                    asp-input="PaymentActionString"
+                                                    asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <span asp-validation-for="PaymentActionString" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="OnholdMinAmount_OverrideForStore" asp-input="OnholdMinAmount" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="OnholdMinAmount" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="OnholdMinAmount" />
+                        <span asp-validation-for="OnholdMinAmount"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="Enforce3d_OverrideForStore" asp-input="Enforce3d" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="Enforce3d" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="Enforce3d" />
+                        <span asp-validation-for="Enforce3d"></span>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="InlineForm_OverrideForStore" asp-input="InlineForm" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="InlineForm" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="InlineForm" />
+                        <span asp-validation-for="InlineForm"></span>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="LabelStyle_OverrideForStore" asp-input="LabelStyle" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="LabelStyle" />
+                    </div>
+                    <div class="col-md-9">
+                        <textarea asp-for="LabelStyle" class="form-control" rows="4"></textarea>
+                        <span asp-validation-for="LabelStyle"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="InputStyle_OverrideForStore" asp-input="InputStyle" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="InputStyle" />
+                    </div>
+                    <div class="col-md-9">
+                        <textarea asp-for="InputStyle" class="form-control" rows="4"></textarea>
+                        <span asp-validation-for="InputStyle"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="TextStyle_OverrideForStore" asp-input="TextStyle" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="TextStyle" />
+                    </div>
+                    <div class="col-md-9">
+                        <textarea asp-for="TextStyle" class="form-control" rows="4"></textarea>
+                        <span asp-validation-for="TextStyle"></span>
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="AdditionalFee_OverrideForStore" asp-input="AdditionalFee" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="AdditionalFee" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="AdditionalFee" />
+                        <span asp-validation-for="AdditionalFee"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="AdditionalFeePercentage_OverrideForStore" asp-input="AdditionalFeePercentage" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="AdditionalFeePercentage" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="AdditionalFeePercentage" />
+                        <span asp-validation-for="AdditionalFeePercentage"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-9 offset-md-3">
+                        <button type="submit" name="save" class="btn btn-primary">@T("Admin.Common.Save")</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

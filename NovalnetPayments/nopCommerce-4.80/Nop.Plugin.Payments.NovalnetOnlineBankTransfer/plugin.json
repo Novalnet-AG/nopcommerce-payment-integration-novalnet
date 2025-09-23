@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Payment methods",
+  "FriendlyName": "Online Bank Transfer",
+  "SystemName": "Payments.NovalnetOnlineBankTransfer",
+  "Version": "1.0.0",
+  "SupportedVersions": [ "4.80" ],
+  "Author": "NOVALNET",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Payments.NovalnetOnlineBankTransfer.dll",
+  "Description": "This plugin enables OnlineBankTransfer payment (stored into database)"
+}

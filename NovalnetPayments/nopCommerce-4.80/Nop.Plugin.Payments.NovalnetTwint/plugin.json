@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Payment methods",
+  "FriendlyName": "TWINT",
+  "SystemName": "Payments.NovalnetTwint",
+  "Version": "1.0.0",
+  "SupportedVersions": [ "4.80" ],
+  "Author": "NOVALNET",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Payments.NovalnetTwint.dll",
+  "Description": "This plugin enables TWINT payment (stored into database)"
+}

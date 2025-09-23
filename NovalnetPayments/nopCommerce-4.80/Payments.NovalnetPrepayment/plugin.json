@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Payment methods",
+  "FriendlyName": "Prepayment",
+  "SystemName": "Payments.NovalnetPrepayment",
+  "Version": "1.0.0",
+  "SupportedVersions": [ "4.80" ],
+  "Author": "NOVALNET",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Payments.NovalnetPrepayment.dll",
+  "Description": "This plugin enables Prepayment payment (stored into database)"
+}

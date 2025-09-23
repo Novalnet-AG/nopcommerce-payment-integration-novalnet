@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Payment methods",
+  "FriendlyName": "Direct Debit ACH",
+  "SystemName": "Payments.NovalnetDirectDebitACH",
+  "Version": "1.0.0",
+  "SupportedVersions": [ "4.80" ],
+  "Author": "NOVALNET",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Payments.NovalnetDirectDebitACH.dll",
+  "Description": "This plugin enables Direct Debit ACH payment (stored into database)"
+}

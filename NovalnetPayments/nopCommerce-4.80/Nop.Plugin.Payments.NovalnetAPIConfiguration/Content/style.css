@@ -1,0 +1,50 @@
+#nn_iban {
+  text-transform: uppercase;
+}
+
+.nn-info-box {
+  position: relative;
+  width: auto;
+  height: auto;
+  background: content-box;
+  font-size: 14px;
+  color: #333;
+  margin: 20px 0;
+  padding: 1em;
+  border-left: 5px solid #0080c9;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.4);
+  clear: both;
+}
+
+.nn-info-box ul {
+  margin: 0 20px;
+  padding: 0;
+}
+
+.nn-info-box li {
+  list-style: none;
+}
+
+.nn-info-box p {
+  padding: 0 1em;
+  margin-bottom: 0;
+}
+
+.nn-bold {
+  font-weight: bold;
+}
+
+.nn-delete-token-btn {
+  cursor: pointer;
+}
+
+.sepa-mandate {
+  cursor: pointer;
+}
+
+.sepa-mandate-details {
+  display: none;
+  padding: 8px;
+  border: 1px solid;
+  border-color: #ddd;
+}

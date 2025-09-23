@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Payment methods",
+  "FriendlyName": "Blik",
+  "SystemName": "Payments.NovalnetBlik",
+  "Version": "1.0.0",
+  "SupportedVersions": [ "4.80" ],
+  "Author": "NOVALNET",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Payments.NovalnetBlik.dll",
+  "Description": "This plugin enables Blik payment (stored into database)"
+}

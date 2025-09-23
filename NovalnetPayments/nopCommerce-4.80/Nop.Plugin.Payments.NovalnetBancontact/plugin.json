@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Payment methods",
+  "FriendlyName": "Bancontact",
+  "SystemName": "Payments.NovalnetBancontact",
+  "Version": "1.0.0",
+  "SupportedVersions": [ "4.80" ],
+  "Author": "NOVALNET",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Payments.NovalnetBancontact.dll",
+  "Description": "This plugin enables the Novalnet Bancontact payment method."
+}

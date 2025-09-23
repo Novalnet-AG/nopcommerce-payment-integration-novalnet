@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Payment methods",
+  "FriendlyName": "PayPal",
+  "SystemName": "Payments.NovalnetPaypal",
+  "Version": "1.0.0",
+  "SupportedVersions": [ "4.80" ],
+  "Author": "NOVALNET",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Payments.NovalnetPaypal.dll",
+  "Description": "This plugin enables PayPal payment (stored into database)"
+}

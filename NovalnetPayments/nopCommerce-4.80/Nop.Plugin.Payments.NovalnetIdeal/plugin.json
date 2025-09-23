@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Payment methods",
+  "FriendlyName": "Ideal",
+  "SystemName": "Payments.NovalnetIdeal",
+  "Version": "1.0.0",
+  "SupportedVersions": [ "4.80" ],
+  "Author": "NOVALNET",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Payments.NovalnetIdeal.dll",
+  "Description": "This plugin enables Ideal payment (stored into database)"
+}

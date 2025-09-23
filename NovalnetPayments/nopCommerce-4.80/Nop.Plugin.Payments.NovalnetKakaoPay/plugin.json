@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Payment methods",
+  "FriendlyName": "KakaoPay",
+  "SystemName": "Payments.NovalnetKakaoPay",
+  "Version": "1.0.0",
+  "SupportedVersions": [ "4.80" ],
+  "Author": "NOVALNET",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Payments.NovalnetKakaoPay.dll",
+  "Description": "This plugin enables KakaoPay payment (stored into database)"
+}

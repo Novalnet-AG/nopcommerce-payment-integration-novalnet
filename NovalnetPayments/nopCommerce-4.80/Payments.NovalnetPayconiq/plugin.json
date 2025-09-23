@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Payment methods",
+  "FriendlyName": "Payconiq",
+  "SystemName": "Payments.NovalnetPayconiq",
+  "Version": "1.0.0",
+  "SupportedVersions": [ "4.80" ],
+  "Author": "NOVALNET",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Payments.NovalnetPayconiq.dll",
+  "Description": "This plugin enables Payconiq payment (stored into database)"
+}

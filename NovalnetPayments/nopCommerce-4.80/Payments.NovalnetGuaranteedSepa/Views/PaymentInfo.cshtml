@@ -1,0 +1,159 @@
+﻿@{
+    Layout = "";
+}
+@model Nop.Plugin.Payments.NovalnetGuaranteedSepa.Models.PaymentInfoModel
+
+<style>
+    .nn_guaranteed_sepa_bic_field {
+        display:none;
+    }
+
+    #nn_guaranteed_sepa_iban {
+        text-transform: uppercase;
+    }
+
+    .nn-info-box {
+        position: relative;
+        width: auto;
+        height: auto;
+        background: content-box;
+        font-size: 14px;
+        color: #333;
+        margin: 20px 0;
+        padding: 1em;
+        border-left: 5px solid #0080c9;
+        box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.4);
+        clear: both;
+    }
+
+    .nn-info-box ul {
+        margin: 0 20px;
+        padding: 0;
+    }
+
+    .nn-info-box li {
+        list-style: none;
+    }
+
+    .nn-info-box p {
+        padding: 0 1em;
+        margin-bottom: 0;
+    }
+
+    .nn-bold {
+        font-weight: bold;
+    }
+
+    .sepa-mandate {
+        cursor: pointer;
+    }
+
+    .sepa-mandate-details {
+        display: none;
+        padding: 8px;
+        border: 1px solid;
+        border-color: #ddd;
+    }
+</style>
+
+@if (Model.TestMode) {
+    <p style="color:red">@T("Plugins.Payments.NovalnetAPIConfiguration.TestModeDesc")</p>
+    <br>
+}
+
+<p>@T("Plugins.Payments.NovalnetGuaranteedSepa.PaymentMethodDescription")</p> 
+
+@if(!string.IsNullOrWhiteSpace(Model.DescriptionText)) {
+    <br>
+    <p>@Html.Raw(Model.DescriptionText)</p>
+}
+
+<br>
+            
+<div class="form-group" id="novalnet_sepa_payment_form">
+
+    <div class="inputs">
+        <label for="nn_guaranteed_sepa_account_holder">@T("Plugins.Payments.NovalnetAPIConfiguration.AccountHolder")</label>    
+        <input type="text" name="nn_guaranteed_sepa_account_holder" id="nn_guaranteed_sepa_account_holder" value="@(string.IsNullOrEmpty(ViewContext?.HttpContext?.Request?.Form["nn_guaranteed_sepa_account_holder"]) ? Model.CustomerName : ViewContext.HttpContext.Request.Form["nn_guaranteed_sepa_account_holder"].ToString())"/>
+    </div>
+
+    <div class="inputs">
+        <label for="nn_guaranteed_sepa_iban">IBAN</label>    
+        <input type="text" name="nn_guaranteed_sepa_iban" id="nn_guaranteed_sepa_iban" placeholder="DEXX XXXX XXXX XXXX XXXX XX" value="@(ViewContext?.HttpContext?.Request?.Form["nn_guaranteed_sepa_iban"].ToString() ?? "")" onkeypress="return NovalnetUtility.checkIban(event);" onkeyup="return NovalnetUtility.formatIban(event);" onchange="return NovalnetUtility.formatIban(event);" style="text-transform:uppercase;"/>
+        <span class="required">*</span>
+    </div>
+
+    <br>
+
+    <div class="inputs nn_guaranteed_sepa_bic_field">
+        <label for="nn_guaranteed_sepa_bic">BIC</label>
+        <input type="text" name="nn_guaranteed_sepa_bic" id="nn_guaranteed_sepa_bic" value="@(ViewContext?.HttpContext?.Request?.Form["nn_guaranteed_sepa_bic"].ToString() ?? "")"/>
+        <span class="required">*</span>
+    </div>
+
+<br>
+    @if (!Model.HasCompany)
+    {
+        <div class="inputs">
+            <label class="nn_guaranteed_sepa_dob" for="nn_guaranteed_sepa_dob">@T("Plugins.Payments.NovalnetAPIConfiguration.DobFieldText")</label>   
+            <input type="text" name="nn_guaranteed_sepa_dob" id="nn_guaranteed_sepa_dob" onkeydown="return NovalnetUtility.isNumericBirthdate( this, event );" value="@(ViewContext?.HttpContext?.Request?.Form["nn_guaranteed_sepa_dob"].ToString() ?? "")" placeholder="@T("Plugins.Payments.NovalnetAPIConfiguration.DobPlaceholder")"/>
+            <span class="required">*</span>
+        </div>
+    }
+
+</div>
+
+<div class="nn-info-box">
+    <ul>
+        <li>
+            <a class="sepa-mandate" id="nn_guaranteed_sepa_mandate">
+                <p class="nn-bold">
+                    @T("Plugins.Payments.NovalnetAPIConfiguration.SepaMandate")
+                </p>
+            </a>
+            
+            <div class="sepa-mandate-details" id="nn_guaranteed_sepa_mandate_details">
+                <br>
+                <p>@T("Plugins.Payments.NovalnetAPIConfiguration.SepaMandateDetails")</p>
+                <br>
+                <p class="nn-bold"> @T("Plugins.Payments.NovalnetAPIConfiguration.SepaCreditor") </p>
+                <br>
+                <p>
+                    <span class="nn-bold">@T("Plugins.Payments.NovalnetAPIConfiguration.Note")</span>
+                    @T("Plugins.Payments.NovalnetAPIConfiguration.SepaNoteDetails")
+                </p>
+
+            </div>
+        </li>
+    </ul>
+</div>
+
+    <script>
+        $(document).ready(function () {
+            const ibanField = $("#nn_guaranteed_sepa_iban");
+            ibanField.on("input", function () {
+                const value = $(this).val().trim().toUpperCase().substring(0, 2);
+                toggleBicField(value);
+            });
+
+            if(ibanField.val()) {
+                var inputCountryCode = ibanField.val().trim().toUpperCase().substring(0, 2);
+                toggleBicField(inputCountryCode);
+            }            
+
+            function toggleBicField(inputCountryCode) {
+                const bicField = $(".nn_guaranteed_sepa_bic_field");
+                const countryCode = ['CH', 'MC', 'SM', 'GB', 'GI'];
+
+                if (countryCode.includes(inputCountryCode)) {
+                    bicField.show();
+                } else {
+                    bicField.hide();
+                }
+            }
+            
+            $('#nn_guaranteed_sepa_mandate').click(function () {
+                $('#nn_guaranteed_sepa_mandate_details').toggle();
+            });
+        });
+    </script>

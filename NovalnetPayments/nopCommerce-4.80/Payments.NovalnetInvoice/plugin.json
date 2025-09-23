@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Payment methods",
+  "FriendlyName": "Invoice",
+  "SystemName": "Payments.NovalnetInvoice",
+  "Version": "1.0.0",
+  "SupportedVersions": [ "4.80" ],
+  "Author": "NOVALNET",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Payments.NovalnetInvoice.dll",
+  "Description": "This plugin enables Invoice payment (stored into database)"
+}

@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "";
+}
+@model Nop.Plugin.Payments.NovalnetPostfinance.Models.PaymentInfoModel
+
+@if (Model.TestMode) {
+    <p style="color:red">@T("Plugins.Payments.NovalnetAPIConfiguration.TestModeDesc")</p> 
+    <br>
+}
+
+<p>@T("Plugins.Payments.NovalnetPostfinance.PaymentMethodDescription")</p> 
+
+@if(!string.IsNullOrWhiteSpace(Model.DescriptionText)) {
+    <br>
+    <p>@Html.Raw(Model.DescriptionText)</p>
+}

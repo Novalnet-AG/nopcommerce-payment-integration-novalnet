@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Payment methods",
+  "FriendlyName": "Novalnet API Configuration",
+  "SystemName": "Payments.NovalnetAPIConfiguration",
+  "Version": "1.0.0",
+  "SupportedVersions": [ "4.80" ],
+  "Author": "NOVALNET",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Payments.NovalnetAPIConfiguration.dll",
+  "Description": "This plugin enables NovalnetAPIConfiguration (stored into database)"
+}

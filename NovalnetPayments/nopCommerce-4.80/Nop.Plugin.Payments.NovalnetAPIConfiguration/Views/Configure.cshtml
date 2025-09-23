@@ -1,0 +1,137 @@
+﻿@model Nop.Plugin.Payments.NovalnetAPIConfiguration.Models.ConfigurationModel
+@{
+    Layout = "_ConfigurePlugin";
+}
+
+@using Nop.Web.Framework.Extensions
+
+@await Component.InvokeAsync(typeof(StoreScopeConfigurationViewComponent))
+
+<form asp-controller="NovalnetAPIConfiguration" asp-action="Configure" method="post">
+    <div class="cards-group">
+        <div class="card card-default">
+            <div class="card-body">
+                <input type="hidden" id="RequiredFieldErrorMsg" value="@T("Plugins.Payments.NovalnetAPIConfiguration.ValueIsRequired")">
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="ProductActivationKey_OverrideForStore" asp-input="ProductActivationKey" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="ProductActivationKey" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="ProductActivationKey"/>
+                        <span asp-validation-for="ProductActivationKey"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="PaymentAccessKey_OverrideForStore" asp-input="PaymentAccessKey" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="PaymentAccessKey" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="PaymentAccessKey" />
+                        <span asp-validation-for="PaymentAccessKey"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="ClientKey_OverrideForStore" asp-input="ClientKey" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="ClientKey" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="ClientKey" />
+                        <span asp-validation-for="ClientKey"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="TariffID_OverrideForStore" asp-input="TariffID" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="TariffID" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="TariffID" />
+                        <span asp-validation-for="TariffID"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="WebhookTestMode_OverrideForStore" asp-input="WebhookTestMode" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="WebhookTestMode" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="WebhookTestMode" />
+                        <span asp-validation-for="WebhookTestMode"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="WebhookUrl_OverrideForStore" asp-input="WebhookUrl" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="WebhookUrl" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="WebhookUrl" />
+                        <span asp-validation-for="WebhookUrl"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="WebhookEmailTo_OverrideForStore" asp-input="WebhookEmailTo" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="WebhookEmailTo" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="WebhookEmailTo" />
+                        <span asp-validation-for="WebhookEmailTo"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-9 offset-md-3">
+                        <button type="submit" name="save" class="btn btn-primary">@T("Admin.Common.Save")</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<script>
+(function () {
+    var fields = ['ProductActivationKey', 'PaymentAccessKey', 'TariffID'];
+
+    $('form').on('submit', function (e) {
+        var isValid = true;
+
+        var requiredMsg = $('#RequiredFieldErrorMsg').val();
+
+        fields.forEach(function (fieldId) {
+            var $input = $('#' + fieldId);
+            var val = $.trim($input.val());
+            var fieldName = $input.attr('name'); // For data-valmsg-for
+            var $errorSpan = $('[data-valmsg-for="' + fieldName + '"]');
+
+            if (val === '') {
+                $errorSpan.text(requiredMsg).addClass('text-danger');
+                isValid = false;
+            } else {
+                $errorSpan.text('').removeClass('text-danger');
+            }
+        });
+
+        if (!isValid) {
+            e.preventDefault(); 
+        }
+    });
+
+    fields.forEach(function (fieldId) {
+        $('#' + fieldId).on('input', function () {
+            var fieldName = $(this).attr('name');
+            $('[data-valmsg-for="' + fieldName + '"]').text('');
+        });
+    });
+
+    function stripAngleBrackets(value) {
+        if (!value) return value;
+        return value.replace(/[<>]/g, '');
+    }
+
+})();
+</script>

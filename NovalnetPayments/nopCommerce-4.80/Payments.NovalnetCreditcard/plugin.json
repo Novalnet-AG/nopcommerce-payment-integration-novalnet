@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Payment methods",
+  "FriendlyName": "Credit/Debit Cards",
+  "SystemName": "Payments.NovalnetCreditcard",
+  "Version": "1.0.0",
+  "SupportedVersions": [ "4.80" ],
+  "Author": "NOVALNET",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Payments.NovalnetCreditcard.dll",
+  "Description": "This plugin enables Creditcard payment (stored into database)"
+}

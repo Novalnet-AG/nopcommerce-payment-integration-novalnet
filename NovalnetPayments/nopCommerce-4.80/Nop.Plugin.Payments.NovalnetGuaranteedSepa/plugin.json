@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Payment methods",
+  "FriendlyName": "Direct Debit SEPA with payment guarantee",
+  "SystemName": "Payments.NovalnetGuaranteedSepa",
+  "Version": "1.0.0",
+  "SupportedVersions": [ "4.80" ],
+  "Author": "NOVALNET",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Payments.NovalnetGuaranteedSepa.dll",
+  "Description": "This plugin enables Direct Debit SEPA with payment guarantee payment (stored into database)"
+}

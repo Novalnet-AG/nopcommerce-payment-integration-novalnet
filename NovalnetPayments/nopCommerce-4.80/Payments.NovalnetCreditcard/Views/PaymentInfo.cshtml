@@ -1,0 +1,215 @@
+﻿@model Nop.Plugin.Payments.NovalnetCreditcard.Models.PaymentInfoModel
+
+@{
+    Layout = "";
+}
+
+@if (Model.TestMode) {
+    <p style="color:red">@T("Plugins.Payments.NovalnetAPIConfiguration.TestModeDesc")</p>
+    <br>
+}
+
+<p>@T("Plugins.Payments.NovalnetCreditcard.PaymentMethodDescription")</p>  <br>
+
+@if(!string.IsNullOrWhiteSpace(Model.DescriptionText)) {
+    <br>
+    <p>@Html.Raw(Model.DescriptionText)</p>
+}
+
+
+<iframe id="novalnet_iframe" frameborder="0" scrolling="no" style="width:auto"></iframe>
+
+<input type="hidden" name="nnPanHash" id="nnPanHash" value="">
+<input type="hidden" name="nnUniqueId" id="nnUniqueId" value="">
+<input type="hidden" name="nnDoRedirect" id="nnDoRedirect" value="">
+<input type="hidden" id="nnPaymentJsonData" value='@Html.Raw(Model.PaymentJsonData)' />
+<input type="hidden" id="nnCardholderLabelText" value='@T("Plugins.Payments.NovalnetCreditcard.Cardholder.Label")' />
+<input type="hidden" id="nnCardholderPlaceholderText" value='@T("Plugins.Payments.NovalnetCreditcard.Cardholder.Placeholder")' />
+<input type="hidden" id="nnCardnumberLabelText" value='@T("Plugins.Payments.NovalnetCreditcard.Cardnumber.Label")' />
+<input type="hidden" id="nnCardnumberPlaceholderText" value='@T("Plugins.Payments.NovalnetCreditcard.Cardnumber.Placeholder")' />
+<input type="hidden" id="nnExpirydateLabelText" value='@T("Plugins.Payments.NovalnetCreditcard.Expirydate.Label")' />
+<input type="hidden" id="nnCVCLabelText" value='@T("Plugins.Payments.NovalnetCreditcard.CVC.Label")' />
+<input type="hidden" id="nnCVCPlaceholderText" value='@T("Plugins.Payments.NovalnetCreditcard.CVC.Placeholder")' />
+
+<script>
+    $(document).ready(function () {
+        if(jQuery('input[name=paymentmethod]:checked').val() == "Payments.NovalnetCreditcard") {
+            jQuery('#payment-info-buttons-container .payment-info-next-step-button').removeAttr('onclick');
+            jQuery('#payment-info-buttons-container .payment-info-next-step-button').click(function (event) {
+                $('#nnPanHash, #nnUniqueId, #nnDoRedirect').val('');
+                    if (jQuery('#novalnet_iframe').is(":visible") && '' == jQuery('#nnPanHash').val()) {
+                        event.preventDefault();
+                        event.stopImmediatePropagation();
+                        NovalnetUtility.getPanHash();
+                    }
+            });
+
+            jQuery('#payment-info-buttons-container a[onclick*="Checkout.back"]').on('click', function (e) {
+                if(!jQuery('#payment-info-buttons-container .payment-info-next-step-button').attr('onclick')) {
+                    jQuery('#payment-info-buttons-container .payment-info-next-step-button').attr('onclick', 'PaymentInfo.save();');
+                }
+            });
+
+            $('#checkout-steps').off('click', 'li.tab-section.allow .step-title').on('click', 'li.tab-section.allow .step-title', function (e) {
+                const stepId = $(this).closest('li').attr('id');
+                if(stepId != "opc-payment_info")
+                {
+                    jQuery('#payment-info-buttons-container .payment-info-next-step-button').attr('onclick', 'PaymentInfo.save();');
+                }
+            });
+        }
+
+        function loadIframe() {
+
+            const paymentJsonData = JSON.parse(document.getElementById("nnPaymentJsonData").value);
+
+            NovalnetUtility.setClientKey(paymentJsonData.client_key);
+
+            var configurationObject = {
+
+                // You can handle the process here, when specific events occur.
+                callback: {
+
+                    // Called once the pan_hash (temp. token) created successfully.
+                    on_success: function (data) {
+                        $('#nnPanHash').val(data.hash);
+                        $('#nnUniqueId').val(data.unique_id);
+                        $('#nnDoRedirect').val(data.do_redirect);
+                        PaymentInfo.save();
+                        return true;
+                    },
+
+                    // Called in case of an invalid payment data or incomplete input.
+                    on_error: function (data) {
+                        if (data.error_message !== undefined) {
+                            alert(data.error_message);
+                            return false;
+                        }
+                    },
+
+                    // Called in case the challenge window Overlay (for 3ds2.0) displays
+                    on_show_overlay: function (data) {
+                        document.getElementById('novalnet_iframe').classList.add('novalnet-challenge-window-overlay');
+                    },
+
+                    // Called in case the Challenge window Overlay (for 3ds2.0) hided
+                    on_hide_overlay: function (data) {
+                        document.getElementById('novalnet_iframe').classList.remove('novalnet-challenge-window-overlay');
+                    },
+                    on_show_captcha: function (result) {
+
+                    }
+                },
+
+                // You can customize your Iframe container styel, text etc.
+                iframe: {
+
+                    // It is mandatory to pass the Iframe ID here.  Based on which the entire process will took place.
+                    id: 'novalnet_iframe',
+
+                    // Set to 1 to make you Iframe input container more compact (default - 0)
+                    inline: paymentJsonData.inline_form,
+
+                    // Add the style (css) here for either the whole Iframe contanier or for particular label/input field
+                    style: {
+                        // The css for the Iframe container
+                        container: paymentJsonData.text_style ? paymentJsonData.textStyle : '',
+
+                        // The css for the input field of the Iframe container
+                        input: paymentJsonData.input_style ? paymentJsonData.input_style : '',
+
+                        // The css for the label of the Iframe container
+                        label: paymentJsonData.label_style ? paymentJsonData.label_style : ''
+                    },
+
+                    // You can customize the text of the Iframe container here
+                    text: {
+
+                        // You can customize the text for the Card Holder here
+                        card_holder: {
+                            // You have to give the Customized label text for the Card Holder Container here
+                            label: $('#nnCardholderLabelText').val(),
+
+                            // You have to give the Customized placeholder text for the Card Holder Container here
+                            place_holder: $('#nnCardholderPlaceholderText').val()
+                        },
+                        card_number: {
+
+                            // You have to give the Customized label text for the Card Number Container here
+                            label: $('#nnCardnumberLabelText').val(),
+
+                            // You have to give the Customized placeholder text for the Card Number Container here
+                            place_holder: $('#nnCardnumberPlaceholderText').val()
+
+                        },
+                        expiry_date: {
+
+                            // You have to give the Customized label text for the Expiry Date Container here
+                            label: $('#nnExpirydateLabelText').val()
+                        },
+                        cvc: {
+
+                            // You have to give the Customized label text for the CVC/CVV/CID Container here
+                            label: $('#nnCVCLabelText').val(),
+
+                            // You have to give the Customized placeholder text for the CVC/CVV/CID Container here
+                            place_holder: $('#nnCVCLabelPlaceholder').val()
+                        }
+                    }
+                },
+
+                // Add Customer data
+                customer: {
+
+                    // Your End-customer's First name which will be prefilled in the Card Holder field
+                    first_name: paymentJsonData.customer.first_name,
+
+                    // Your End-customer's Last name which will be prefilled in the Card Holder field
+                    last_name: paymentJsonData.customer.last_name,
+
+                    // Your End-customer's Email ID.
+                    email: paymentJsonData.customer.email,
+
+                    // Your End-customer's billing address.
+                    billing: {
+
+                        // Your End-customer's billing street (incl. House no).
+                        street: paymentJsonData.customer.street,
+
+                        // Your End-customer's billing city.
+                        city: paymentJsonData.customer.city,
+
+                        // Your End-customer's billing zip.
+                        zip: paymentJsonData.customer.zip,
+
+                        // Your End-customer's billing country ISO code.
+                        country_code: paymentJsonData.customer.country_code
+                    },
+                    shipping: paymentJsonData.customer.shipping
+                },
+
+                // Add transaction data
+                transaction: {
+
+                    // The payable amount that can be charged for the transaction (in minor units), for eg:- Euro in Eurocents (5,22 EUR = 522).
+                    amount: paymentJsonData.transaction.amount,
+
+                    // The three-character currency code as defined in ISO-4217.
+                    currency: paymentJsonData.transaction.currency,
+
+                    // Set to 1 for the TEST transaction (default - 0).
+                    test_mode: paymentJsonData.transaction.test_mode,
+
+                    enforce_3d: paymentJsonData.transaction.enforce_3d
+                },
+                custom: {
+                    lang: paymentJsonData.custom.lang
+                }
+            };
+            
+            // Create the Credit Card form
+            NovalnetUtility.createCreditCardForm(configurationObject);
+        }
+    loadIframe();
+});
+</script>

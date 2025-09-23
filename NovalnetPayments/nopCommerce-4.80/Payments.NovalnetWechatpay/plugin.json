@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Payment methods",
+  "FriendlyName": "WeChat Pay",
+  "SystemName": "Payments.NovalnetWechatPay",
+  "Version": "1.0.0",
+  "SupportedVersions": [ "4.80" ],
+  "Author": "NOVALNET",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Payments.NovalnetWechatpay.dll",
+  "Description": "This plugin enables NovalnetWechatPay payment (stored into database)"
+}

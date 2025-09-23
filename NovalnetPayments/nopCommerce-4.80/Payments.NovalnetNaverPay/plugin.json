@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Payment methods",
+  "FriendlyName": "Naver Pay",
+  "SystemName": "Payments.NovalnetNaverPay",
+  "Version": "1.0.0",
+  "SupportedVersions": [ "4.80" ],
+  "Author": "NOVALNET",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Payments.NovalnetNaverPay.dll",
+  "Description": "This plugin enables NaverPay payment (stored into database)"
+}
