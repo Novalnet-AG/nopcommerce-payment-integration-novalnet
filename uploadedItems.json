@@ -1,0 +1,191 @@
+[
+  {
+    "Type": "Plugin",
+    "SystemName": "Payments.NovalnetAPIConfiguration",
+    "SupportedVersion": "4.90",
+    "DirectoryPath": "NovalnetPayments/nopCommerce-4.90/Payments.NovalnetAPIConfiguration/",
+    "SourceDirectoryPath": "NovalnetPayments/nopCommerce-4.90/Nop.Plugin.Payments.NovalnetAPIConfiguration/"
+  },
+  {
+    "Type": "Plugin",
+    "SystemName": "Payments.NovalnetBancontact",
+    "SupportedVersion": "4.90",
+    "DirectoryPath": "NovalnetPayments/nopCommerce-4.90/Payments.NovalnetBancontact/",
+    "SourceDirectoryPath": "NovalnetPayments/nopCommerce-4.90/Nop.Plugin.Payments.NovalnetBancontact/"
+  },
+  {
+    "Type": "Plugin",
+    "SystemName": "Payments.NovalnetCreditcard",
+    "SupportedVersion": "4.90",
+    "DirectoryPath": "NovalnetPayments/nopCommerce-4.90/Payments.NovalnetCreditcard/",
+    "SourceDirectoryPath": "NovalnetPayments/nopCommerce-4.90/Nop.Plugin.Payments.NovalnetCreditcard/"
+  },
+  {
+    "Type": "Plugin",
+    "SystemName": "Payments.NovalnetEps",
+    "SupportedVersion": "4.90",
+    "DirectoryPath": "NovalnetPayments/nopCommerce-4.90/Payments.NovalnetEps/",
+    "SourceDirectoryPath": "NovalnetPayments/nopCommerce-4.90/Nop.Plugin.Payments.NovalnetEps/"
+  },
+  {
+    "Type": "Plugin",
+    "SystemName": "Payments.NovalnetGuaranteedInvoice",
+    "SupportedVersion": "4.90",
+    "DirectoryPath": "NovalnetPayments/nopCommerce-4.90/Payments.NovalnetGuaranteedInvoice/",
+    "SourceDirectoryPath": "NovalnetPayments/nopCommerce-4.90/Nop.Plugin.Payments.NovalnetGuaranteedInvoice/"
+  },
+  {
+    "Type": "Plugin",
+    "SystemName": "Payments.NovalnetGuaranteedSepa",
+    "SupportedVersion": "4.90",
+    "DirectoryPath": "NovalnetPayments/nopCommerce-4.90/Payments.NovalnetGuaranteedSepa/",
+    "SourceDirectoryPath": "NovalnetPayments/nopCommerce-4.90/Nop.Plugin.Payments.NovalnetGuaranteedSepa/"
+  },
+  {
+    "Type": "Plugin",
+    "SystemName": "Payments.NovalnetIdeal",
+    "SupportedVersion": "4.90",
+    "DirectoryPath": "NovalnetPayments/nopCommerce-4.90/Payments.NovalnetIdeal/",
+    "SourceDirectoryPath": "NovalnetPayments/nopCommerce-4.90/Nop.Plugin.Payments.NovalnetIdeal/"
+  },
+  {
+    "Type": "Plugin",
+    "SystemName": "Payments.NovalnetInvoice",
+    "SupportedVersion": "4.90",
+    "DirectoryPath": "NovalnetPayments/nopCommerce-4.90/Payments.NovalnetInvoice/",
+    "SourceDirectoryPath": "NovalnetPayments/nopCommerce-4.90/Nop.Plugin.Payments.NovalnetInvoice/"
+  },
+  {
+    "Type": "Plugin",
+    "SystemName": "Payments.NovalnetOnlineBankTransfer",
+    "SupportedVersion": "4.90",
+    "DirectoryPath": "NovalnetPayments/nopCommerce-4.90/Payments.NovalnetOnlineBankTransfer/",
+    "SourceDirectoryPath": "NovalnetPayments/nopCommerce-4.90/Nop.Plugin.Payments.NovalnetOnlineBankTransfer/"
+  },
+  {
+    "Type": "Plugin",
+    "SystemName": "Payments.NovalnetPaypal",
+    "SupportedVersion": "4.90",
+    "DirectoryPath": "NovalnetPayments/nopCommerce-4.90/Payments.NovalnetPaypal/",
+    "SourceDirectoryPath": "NovalnetPayments/nopCommerce-4.90/Nop.Plugin.Payments.NovalnetPaypal/"
+  },
+  {
+    "Type": "Plugin",
+    "SystemName": "Payments.NovalnetPostfinance",
+    "SupportedVersion": "4.90",
+    "DirectoryPath": "NovalnetPayments/nopCommerce-4.90/Payments.NovalnetPostfinance/",
+    "SourceDirectoryPath": "NovalnetPayments/nopCommerce-4.90/Nop.Plugin.Payments.NovalnetPostfinance/"
+  },
+  {
+    "Type": "Plugin",
+    "SystemName": "Payments.NovalnetPostfinancecard",
+    "SupportedVersion": "4.90",
+    "DirectoryPath": "NovalnetPayments/nopCommerce-4.90/Payments.NovalnetPostfinancecard/",
+    "SourceDirectoryPath": "NovalnetPayments/nopCommerce-4.90/Nop.Plugin.Payments.NovalnetPostfinancecard/"
+  },
+  {
+    "Type": "Plugin",
+    "SystemName": "Payments.NovalnetPrepayment",
+    "SupportedVersion": "4.90",
+    "DirectoryPath": "NovalnetPayments/nopCommerce-4.90/Payments.NovalnetPrepayment/",
+    "SourceDirectoryPath": "NovalnetPayments/nopCommerce-4.90/Nop.Plugin.Payments.NovalnetPrepayment/"
+  },
+  {
+    "Type": "Plugin",
+    "SystemName": "Payments.NovalnetSepa",
+    "SupportedVersion": "4.90",
+    "DirectoryPath": "NovalnetPayments/nopCommerce-4.90/Payments.NovalnetSepa/",
+    "SourceDirectoryPath": "NovalnetPayments/nopCommerce-4.90/Nop.Plugin.Payments.NovalnetSepa/"
+  },
+  {
+    "Type": "Plugin",
+    "SystemName": "Payments.NovalnetTwint",
+    "SupportedVersion": "4.90",
+    "DirectoryPath": "NovalnetPayments/nopCommerce-4.90/Payments.NovalnetTwint/",
+    "SourceDirectoryPath": "NovalnetPayments/nopCommerce-4.90/Nop.Plugin.Payments.NovalnetTwint/"
+  },
+  {
+    "Type": "Plugin",
+    "SystemName": "Payments.NovalnetMultibanco",
+    "SupportedVersion": "4.90",
+    "DirectoryPath": "NovalnetPayments/nopCommerce-4.90/Payments.NovalnetMultibanco/",
+    "SourceDirectoryPath": "NovalnetPayments/nopCommerce-4.90/Nop.Plugin.Payments.NovalnetMultibanco/"
+  },
+  {
+    "Type": "Plugin",
+    "SystemName": "Payments.NovalnetAlipay",
+    "SupportedVersion": "4.90",
+    "DirectoryPath": "NovalnetPayments/nopCommerce-4.90/Payments.NovalnetAlipay/",
+    "SourceDirectoryPath": "NovalnetPayments/nopCommerce-4.90/Nop.Plugin.Payments.NovalnetAlipay/"
+  },
+  {
+    "Type": "Plugin",
+    "SystemName": "Payments.NovalnetBlik",
+    "SupportedVersion": "4.90",
+    "DirectoryPath": "NovalnetPayments/nopCommerce-4.90/Payments.NovalnetBlik/",
+    "SourceDirectoryPath": "NovalnetPayments/nopCommerce-4.90/Nop.Plugin.Payments.NovalnetBlik/"
+  },
+  {
+    "Type": "Plugin",
+    "SystemName": "Payments.NovalnetDirectDebitACH",
+    "SupportedVersion": "4.90",
+    "DirectoryPath": "NovalnetPayments/nopCommerce-4.90/Payments.NovalnetDirectDebitACH/",
+    "SourceDirectoryPath": "NovalnetPayments/nopCommerce-4.90/Nop.Plugin.Payments.NovalnetDirectDebitACH/"
+  },
+  {
+    "Type": "Plugin",
+    "SystemName": "Payments.NovalnetKakaoPay",
+    "SupportedVersion": "4.90",
+    "DirectoryPath": "NovalnetPayments/nopCommerce-4.90/Payments.NovalnetKakaoPay/",
+    "SourceDirectoryPath": "NovalnetPayments/nopCommerce-4.90/Nop.Plugin.Payments.NovalnetKakaoPay/"
+  },
+  {
+    "Type": "Plugin",
+    "SystemName": "Payments.NovalnetMbWay",
+    "SupportedVersion": "4.90",
+    "DirectoryPath": "NovalnetPayments/nopCommerce-4.90/Payments.NovalnetMbWay/",
+    "SourceDirectoryPath": "NovalnetPayments/nopCommerce-4.90/Nop.Plugin.Payments.NovalnetMbWay/"
+  },
+  {
+    "Type": "Plugin",
+    "SystemName": "Payments.NovalnetNaverPay",
+    "SupportedVersion": "4.90",
+    "DirectoryPath": "NovalnetPayments/nopCommerce-4.90/Payments.NovalnetNaverPay/",
+    "SourceDirectoryPath": "NovalnetPayments/nopCommerce-4.90/Nop.Plugin.Payments.NovalnetNaverPay/"
+  },
+  {
+    "Type": "Plugin",
+    "SystemName": "Payments.NovalnetTrustly",
+    "SupportedVersion": "4.90",
+    "DirectoryPath": "NovalnetPayments/nopCommerce-4.90/Payments.NovalnetTrustly/",
+    "SourceDirectoryPath": "NovalnetPayments/nopCommerce-4.90/Nop.Plugin.Payments.NovalnetTrustly/"
+  },
+  {
+    "Type": "Plugin",
+    "SystemName": "Payments.NovalnetWechatpay",
+    "SupportedVersion": "4.90",
+    "DirectoryPath": "NovalnetPayments/nopCommerce-4.90/Payments.NovalnetWechatpay/",
+    "SourceDirectoryPath": "NovalnetPayments/nopCommerce-4.90/Nop.Plugin.Payments.NovalnetWechatpay/"
+  },
+  {
+    "Type": "Plugin",
+    "SystemName": "Payments.NovalnetPrzelewy",
+    "SupportedVersion": "4.90",
+    "DirectoryPath": "NovalnetPayments/nopCommerce-4.90/Payments.NovalnetPrzelewy/",
+    "SourceDirectoryPath": "NovalnetPayments/nopCommerce-4.90/Nop.Plugin.Payments.NovalnetPrzelewy/"
+  },
+  {
+    "Type": "Plugin",
+    "SystemName": "Payments.NovalnetGooglePay",
+    "SupportedVersion": "4.90",
+    "DirectoryPath": "NovalnetPayments/nopCommerce-4.90/Payments.NovalnetGooglePay/",
+    "SourceDirectoryPath": "NovalnetPayments/nopCommerce-4.90/Nop.Plugin.Payments.NovalnetGooglePay/"
+  },
+  {
+    "Type": "Plugin",
+    "SystemName": "Payments.NovalnetApplePay",
+    "SupportedVersion": "4.90",
+    "DirectoryPath": "NovalnetPayments/nopCommerce-4.90/Payments.NovalnetApplePay/",
+    "SourceDirectoryPath": "NovalnetPayments/nopCommerce-4.90/Nop.Plugin.Payments.NovalnetApplePay/"
+  }
+]

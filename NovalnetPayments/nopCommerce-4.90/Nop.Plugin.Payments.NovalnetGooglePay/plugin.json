@@ -1,0 +1,11 @@
+{
+  "Group": "Payment methods",
+  "FriendlyName": "Google Pay",
+  "SystemName": "Payments.NovalnetGooglePay",
+  "Version": "1.1.0",
+  "SupportedVersions": [ "4.90" ],
+  "Author": "NOVALNET",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Payments.NovalnetGooglePay.dll",
+  "Description": "This plugin enables Google Pay payment (stored into database)"
+}

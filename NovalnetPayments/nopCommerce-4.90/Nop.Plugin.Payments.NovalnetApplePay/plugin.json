@@ -1,0 +1,11 @@
+{
+  "Group": "Payment methods",
+  "FriendlyName": "Apple Pay",
+  "SystemName": "Payments.NovalnetApplePay",
+  "Version": "1.1.0",
+  "SupportedVersions": [ "4.90" ],
+  "Author": "NOVALNET",
+  "DisplayOrder": 2,
+  "FileName": "Nop.Plugin.Payments.NovalnetApplePay.dll",
+  "Description": "This plugin enables Apple Pay payment (stored into database)"
+}

@@ -1,0 +1,36 @@
+@model ExpressCheckoutModel
+@using System.Text.Json
+
+
+@{
+    var pageType = Model.Placement == ExpressButtonPlacement.Product ? "product" : "cart";
+    var containerSuffix = Model.Placement == ExpressButtonPlacement.Product ? $"product-{Model.ProductId}" : "cart";
+    var googlePayContainer = $"nn-googlepay-express-container-{containerSuffix}";
+    var jsonDataId = $"nn-googlepay-express-json-{containerSuffix}";
+}
+
+<div id="@googlePayContainer" class="nn-googlepay-express-container" style="margin: 10px 0;"></div>
+<input type="hidden" id="@jsonDataId" value='@Html.Raw(Model.PaymentJsonData)' />
+@*token for PlaceExpressOrder, so it doesn't depend on the host page rendering a form with one*@
+@Html.AntiForgeryToken()
+
+<script src="https://cdn.novalnet.de/js/v3/payment.js" asp-location="Auto"></script>
+<script src="~/Plugins/Payments.NovalnetGooglePay/Content/js/novalnet-googlepay.js" asp-location="Footer"></script>
+
+<script asp-location="Footer">
+    $(function () {
+        NovalnetGooglePay.init({
+            page: '@pageType',
+            container: '#@googlePayContainer',
+            jsonData: JSON.parse($('#@jsonDataId').val()),
+            productId: @(Model.ProductId?.ToString() ?? "null"),
+            isVirtualProduct: @(Model.IsVirtualProduct),
+            checkoutDisabled: @(Model.CheckoutDisabled),
+            checkoutDisabledMessage: @Html.Raw(JsonSerializer.Serialize(T("Checkout.Disabled").Value, new JsonSerializerOptions{Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping})),
+            transactionInfoUrl: '@Url.Action("GetExpressTransactionInfo", "NovalnetGooglePay")',
+            updateShippingUrl: '@Url.Action("UpdateShipping", "NovalnetGooglePay")',
+            placeOrderUrl: '@Url.Action("PlaceExpressOrder", "NovalnetGooglePay")',
+            addToCartUrl: '@Url.RouteUrl(NopRouteNames.Ajax.ADD_PRODUCT_TO_CART_DETAILS, new { productId = Model.ProductId, shoppingCartTypeId = (int)ShoppingCartType.ShoppingCart })'
+        });
+    });
+</script>

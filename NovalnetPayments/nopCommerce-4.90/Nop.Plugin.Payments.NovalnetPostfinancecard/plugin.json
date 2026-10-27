@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Payment methods",
+  "FriendlyName": "PostFinance Card",
+  "SystemName": "Payments.NovalnetPostfinancecard",
+  "Version": "1.1.0",
+  "SupportedVersions": [ "4.90" ],
+  "Author": "NOVALNET",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Payments.NovalnetPostfinancecard.dll",
+  "Description": "This plugin enables Postfinance card payment (stored into database)"
+}

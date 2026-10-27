@@ -1,0 +1,38 @@
+@model Nop.Plugin.Payments.NovalnetApplePay.Models.PaymentInfoModel
+
+@{
+    Layout = "";
+}
+
+@if (Model.TestMode) {
+    <p style="color:red">@T("Plugins.Payments.NovalnetAPIConfiguration.TestModeDesc")</p>
+    <br>
+}
+
+<p>@T("Plugins.Payments.NovalnetApplePay.PaymentMethodDescription")</p>  <br>
+
+@if(!string.IsNullOrWhiteSpace(Model.DescriptionText)) {
+    <br>
+    <p>@Html.Raw(Model.DescriptionText)</p>
+}
+
+
+<div id="applepay_container" class="nn-applepay-container"></div>
+<input type="hidden" id="nnApplePayApplePayJsonData" value='@Html.Raw(Model.PaymentJsonData)' />
+<input type="hidden" id="nnApplePayUpdateShippingUrl" value="@Url.Action("UpdateShipping", "NovalnetApplePay")" />
+<input type="hidden" name="nnApplePayToken" id="nnApplePayToken" value="" />
+
+
+<script>
+    $(document).ready(function () {
+        NovalnetApplePay.init({
+            page: 'checkout',
+            container: '#applepay_container',
+            jsonData: JSON.parse($('#nnApplePayApplePayJsonData').val()),
+            updateShippingUrl: $('#nnApplePayUpdateShippingUrl').val(),
+            tokenField: '#nnApplePayToken',
+            isVirtualProduct: @(Model.IsVirtualProduct),
+            transactionInfoUrl: '@Url.Action("GetExpressTransactionInfo", "NovalnetApplePay")'
+        });
+    });
+</script>

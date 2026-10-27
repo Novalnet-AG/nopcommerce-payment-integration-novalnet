@@ -1,0 +1,34 @@
+@model ExpressCheckoutModel
+@using System.Text.Json
+
+@{
+    //the express button on the checkout page acts on the existing cart just like on the cart page
+    var pageType = Model.Placement == ExpressButtonPlacement.Product ? "product" : "cart";
+    var containerSuffix = Model.Placement == ExpressButtonPlacement.Product ? $"product-{Model.ProductId}" : "cart";
+    var applePayContainer = $"nn-applepay-express-container-{containerSuffix}";
+    var jsonDataId = $"nn-applepay-express-json-{containerSuffix}";
+}
+
+<div id="@applePayContainer" class="nn-applepay-express-container"></div>
+<input type="hidden" id="@jsonDataId" value='@Html.Raw(Model.PaymentJsonData)' />
+
+<script src="https://cdn.novalnet.de/js/v3/payment.js" asp-location="Auto"></script>
+<script src="~/Plugins/Payments.NovalnetApplePay/Content/js/novalnet-applepay.js" asp-location="Footer"></script>
+
+<script asp-location="Footer">
+    $(function () {
+        NovalnetApplePay.init({
+            page: '@pageType',
+            container: '#@applePayContainer',
+            jsonData: JSON.parse($('#@jsonDataId').val()),
+            productId: @(Model.ProductId?.ToString() ?? "null"),
+            transactionInfoUrl: '@Url.Action("GetExpressTransactionInfo", "NovalnetApplePay")',
+            updateShippingUrl: '@Url.Action("UpdateShipping", "NovalnetApplePay")',
+            placeOrderUrl: '@Url.Action("PlaceExpressOrder", "NovalnetApplePay")',
+            addToCartUrl: '@Url.RouteUrl(NopRouteNames.Ajax.ADD_PRODUCT_TO_CART_DETAILS, new { productId = Model.ProductId, shoppingCartTypeId = (int)ShoppingCartType.ShoppingCart })',
+            isVirtualProduct: @(Model.IsVirtualProduct),
+            checkoutDisabled: @(Model.CheckoutDisabled),
+            checkoutDisabledMessage: @Html.Raw(JsonSerializer.Serialize(T("Checkout.Disabled").Value, new JsonSerializerOptions{Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping})),
+        });
+    });
+</script>

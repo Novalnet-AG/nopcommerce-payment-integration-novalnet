@@ -1,0 +1,41 @@
+@model Nop.Plugin.Payments.NovalnetGooglePay.Models.PaymentInfoModel
+
+@{
+    Layout = "";
+}
+
+@if (Model.TestMode) {
+    <p style="color:red">@T("Plugins.Payments.NovalnetAPIConfiguration.TestModeDesc")</p>
+    <br>
+}
+
+<p>@T("Plugins.Payments.NovalnetGooglePay.PaymentMethodDescription")</p>  <br>
+
+@if(!string.IsNullOrWhiteSpace(Model.DescriptionText)) {
+    <br>
+    <p>@Html.Raw(Model.DescriptionText)</p>
+}
+
+
+<div id="googlepay_container" style="margin: 10px 0;"></div>
+<input type="hidden" id="nnGooglePayGooglePayJsonData" value='@Html.Raw(Model.PaymentJsonData)' />
+<input type="hidden" id="nnGooglePayUpdateShippingUrl" value="@Url.Action("UpdateShipping", "NovalnetGooglePay")" />
+<input type="hidden" name="nnGooglePayToken" id="nnGooglePayToken" value="" />
+<input type="hidden" name="nnGooglePayDoRedirect" id="nnGooglePayDoRedirect" value="" />
+
+
+<script>
+    $(document).ready(function () {
+        NovalnetGooglePay.init({
+            page: 'checkout',
+            container: '#googlepay_container',
+            jsonData: JSON.parse($('#nnGooglePayGooglePayJsonData').val()),
+            updateShippingUrl: $('#nnGooglePayUpdateShippingUrl').val(),
+            checkoutStateUrl: '@Url.Action("CheckCheckoutState", "NovalnetGooglePay")',
+            transactionInfoUrl: '@Url.Action("GetExpressTransactionInfo", "NovalnetGooglePay")',
+            tokenField: '#nnGooglePayToken',
+            doRedirectField: '#nnGooglePayDoRedirect',
+            isVirtualProduct: @(Model.IsVirtualProduct)
+        });
+    });
+</script>

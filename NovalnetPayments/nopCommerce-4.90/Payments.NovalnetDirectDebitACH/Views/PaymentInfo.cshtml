@@ -1,0 +1,44 @@
+﻿@{
+    Layout = "";
+}
+
+@model Nop.Plugin.Payments.NovalnetDirectDebitACH.Models.PaymentInfoModel
+
+@if (Model.TestMode) {
+    <p style="color:red">@T("Plugins.Payments.NovalnetAPIConfiguration.TestModeDesc")</p>
+    <br>
+}
+
+<p>@T("Plugins.Payments.NovalnetDirectDebitACH.PaymentMethodDescription")</p> 
+
+@if(!string.IsNullOrWhiteSpace(Model.DescriptionText)) {
+    <br>
+    <p>@Html.Raw(Model.DescriptionText)</p>
+}
+<br>
+<div class="form-group" id="novalnet_ach_payment_form">
+
+    <div class="inputs">
+        <label for="nn_ach_account_holder">@T("Plugins.Payments.NovalnetAPIConfiguration.AccountHolder")</label>    
+        <input type="text" name="nn_ach_account_holder" id="nn_ach_account_holder" required placeholder="@T("Plugins.Payments.NovalnetAPIConfiguration.AccountHolder")" value="@(Context.Request.HasFormContentType ? Context.Request.Form["nn_ach_account_holder"].ToString() : "")"/>
+        <span class="required">*</span>
+    </div>
+<br>
+
+    <div class="inputs">
+        <label for="nn_ach_account_number">@T("Plugins.Payments.NovalnetAPIConfiguration.AccountNumber")</label>
+        <input type="text" name="nn_ach_account_number" id="nn_ach_account_number" value="@(Context.Request.HasFormContentType ? Context.Request.Form["nn_ach_account_number"].ToString() : "")" placeholder="@T("Plugins.Payments.NovalnetAPIConfiguration.AccountNumber")" data-val="true" data-val-required="AccountNumber is required."/>
+        <span class="required">*</span>
+        <span class="field-validation-valid" data-valmsg-for="nn_ach_account_number" data-valmsg-replace="true"></span>
+    </div>
+
+<br>
+
+    <div class="inputs">
+        <label for="nn_ach_routing_number">@T("Plugins.Payments.NovalnetAPIConfiguration.RoutingNumber")</label>
+        <input type="text" name="nn_ach_routing_number" id="nn_ach_routing_number" value="@(Context.Request.HasFormContentType ? Context.Request.Form["nn_ach_routing_number"].ToString() : "")" placeholder="@T("Plugins.Payments.NovalnetAPIConfiguration.RoutingNumber")"  data-val="true" data-val-required="RoutingNumber is required."/>
+        <span class="required">*</span>
+        <span class="field-validation-valid" data-valmsg-for="nn_ach_routing_number" data-valmsg-replace="true"></span>
+    </div>
+
+</div>

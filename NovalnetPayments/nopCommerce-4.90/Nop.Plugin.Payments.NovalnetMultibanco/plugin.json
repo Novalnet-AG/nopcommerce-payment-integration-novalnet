@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Payment methods",
+  "FriendlyName": "Multibanco",
+  "SystemName": "Payments.NovalnetMultibanco",
+  "Version": "1.1.0",
+  "SupportedVersions": [ "4.90" ],
+  "Author": "NOVALNET",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Payments.NovalnetMultibanco.dll",
+  "Description": "This plugin enables Multibanco payment (stored into database)"
+}

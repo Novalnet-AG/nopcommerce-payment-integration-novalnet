@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Payment methods",
+  "FriendlyName": "Przelewy24",
+  "SystemName": "Payments.NovalnetPrzelewy",
+  "Version": "1.1.0",
+  "SupportedVersions": [ "4.90" ],
+  "Author": "NOVALNET",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Payments.NovalnetPrzelewy.dll",
+  "Description": "This plugin enables Przelewy24 payment (stored into database)"
+}

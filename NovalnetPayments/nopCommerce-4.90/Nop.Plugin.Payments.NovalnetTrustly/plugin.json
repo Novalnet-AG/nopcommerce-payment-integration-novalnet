@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Payment methods",
+  "FriendlyName": "Trustly",
+  "SystemName": "Payments.NovalnetTrustly",
+  "Version": "1.1.0",
+  "SupportedVersions": [ "4.90" ],
+  "Author": "NOVALNET",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Payments.NovalnetTrustly.dll",
+  "Description": "This plugin enables Trustly payment (stored into database)"
+}

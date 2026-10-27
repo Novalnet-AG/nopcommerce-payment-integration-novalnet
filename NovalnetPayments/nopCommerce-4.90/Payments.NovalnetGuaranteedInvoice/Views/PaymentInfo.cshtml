@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "";
+}
+@model Nop.Plugin.Payments.NovalnetGuaranteedInvoice.Models.PaymentInfoModel
+
+@if (Model.TestMode) {
+    <p style="color:red">@T("Plugins.Payments.NovalnetAPIConfiguration.TestModeDesc")</p>
+    <br>
+}
+
+<p>@T("Plugins.Payments.NovalnetGuaranteedInvoice.PaymentMethodDescription")</p> 
+
+@if(!string.IsNullOrWhiteSpace(Model.DescriptionText)) {
+    <br>
+    <p>@Html.Raw(Model.DescriptionText)</p>
+}
+
+<br>
+
+@if (!Model.HasCompany)
+{
+    
+        
+    
+
+	<div class="inputs">
+		<label class="nn_guaranteed_invoice_dob" for="nn_guaranteed_invoice_dob">@T("Plugins.Payments.NovalnetAPIConfiguration.DobFieldText")</label>   
+			<input type="text" name="nn_guaranteed_invoice_dob" id="nn_guaranteed_invoice_dob" onkeydown="return NovalnetUtility.isNumericBirthdate( this, event );" value="@(Context.Request.HasFormContentType ? Context.Request.Form["nn_guaranteed_invoice_dob"].ToString() : "")" placeholder="@T("Plugins.Payments.NovalnetAPIConfiguration.DobPlaceholder")"/>
+		<span class="required">*</span>
+	</div>
+}
